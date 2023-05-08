@@ -30,13 +30,14 @@ const socket = socketClusterClient.create({
     // ... Handle channel data.
     console.log('Listen client1Channel: ' + data);
   }
-
-  /*------ publish data to channel '2' ---------*/
-  let interval = setInterval(function () {
-    let date = new Date();
-    socket.transmitPublish('client2', 'client 1 send data test' + date.toISOString());
-  }, 6000);
 })();
+
+/*------ publish data to channel '2' ---------*/
+
+let interval = setInterval(function () {
+  let date = new Date();
+  socket.transmitPublish('client2', 'client 1 send data test' + date.toISOString());
+}, 5000);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
